@@ -1,19 +1,19 @@
 ![](https://gaforgithub.azurewebsites.net/api?repo=CKAD-exercises/multi_container&empty)
-# Multi-container Pods (10%)
+# Multi-container Pods（マルチコンテナ Pod） (10%)
 
-### Create a Pod with two containers, both with image busybox and command "echo hello; sleep 3600". Connect to the second container and run 'ls'
+### Create a Pod with two containers, both with image busybox and command "echo hello; sleep 3600". Connect to the second container and run 'ls'（2つのコンテナを含むPodを作ってください。2つのコンテナはどちらもbusyboxイメージで"echo hello; sleep 3600"をコマンド実行するように設定してください。2つ目のコンテナに接続して'ls'コマンドを実行してくだい。）
 
 <details><summary>show</summary>
 <p>
 
-Easiest way to do it is create a pod with a single container and save its definition in a YAML file:
+Easiest way to do it is create a pod with a single container and save its definition in a YAML file:(一番簡単な方法は、1つのコンテナを含むPodを作り、その定義をyamlファイルに保存することです。)
 
 ```bash
 kubectl run busybox --image=busybox --restart=Never -o yaml --dry-run -- /bin/sh -c 'echo hello;sleep 3600' > pod.yaml
 vi pod.yaml
 ```
 
-Copy/paste the container related values, so your final YAML should contain the following two containers (make sure those containers have a different name):
+Copy/paste the container related values, so your final YAML should contain the following two containers (make sure those containers have a different name):（作成したYAMLファイルのコンテナに関する部分をコピー＆ペーストして、以下のような２つのコンテナを持つYAMLを作ってください。（コンテナ名がかぶらないようにしてください））
 
 ```YAML
 containers:
